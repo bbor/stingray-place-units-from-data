@@ -10,8 +10,8 @@ When you run this script, the editor reads the desired unit names and their desi
 
 2.  Export the data for your units into a file called `place-units.lua` in the root folder of your project.
 
-3.  Hit **F5** in the editor to force a re-compile of the project and the `place-units` file.
-
+3.  Hit **F5** in the editor to force a re-compile of the project and the `place-units` file. See [Data file format](#data-file-format) below.
+ 
 4.  The plug-in adds a new **Create > Place units from file** option to the main menu. Choose this to run the script.
 
 ## Data file format
