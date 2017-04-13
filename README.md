@@ -6,13 +6,13 @@ When you run this script, the editor reads the desired unit names and their desi
 
 ## To use this plug-in
 
-1.  Save the *.stingray-plugin* file into your project, or install it using the **Plugin Manager** in the Stingray editor.
+1.  Save the *.stingray-plugin* file into your project, or install it using the **Plugin Manager** in the Stingray editor. It'll add a new **Create > Place units from file** option to the main menu.
 
-2.  Export the data for your units into a file called `place-units.lua` in the root folder of your project.
+2.  Export the data for your units into a file called `place-units.lua` in the root folder of your project. See [Data file format](#data-file-format) below.
 
-3.  Hit **F5** in the editor to force a re-compile of the project and the `place-units` file. See [Data file format](#data-file-format) below.
+3.  Hit **F5** in the editor to force a re-compile of the project and the new `place-units` file.
  
-4.  The plug-in adds a new **Create > Place units from file** option to the main menu. Choose this to run the script.
+4.  Choose **Create > Place units from file** from the main menu to place your units.
 
 ## Data file format
 
