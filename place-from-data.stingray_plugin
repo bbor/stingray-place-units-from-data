@@ -1,0 +1,52 @@
+// About
+//
+name = "Place units from data"
+description = "A Lua script for the editor that automatically places units at the positions and rotations specified in a data file."
+version = "1.0.0"
+changelog = {
+    "1.0.0": "First version"
+}
+keywords = ["stingray", "plugin"]
+
+// Extensions
+//
+extensions = {
+
+    // Define menu items to trigger actions, open views, etc..
+    menus = [
+        { 
+            path = "Create/Place units from file" 
+            action = {
+                name = "place-units"
+                type = "lua"
+                script = """
+                    local PLACEMENT_DATA_FILENAME = "place-units"
+                    
+                    local placement_data = require(PLACEMENT_DATA_FILENAME)
+                    for index, record in pairs(placement_data) do
+                            -- get the position and rotation from the file data
+                        local position = stingray.Vector3( record.x, record.y, record.z )
+                        local rotation = stingray.Quaternion.axis_angle( stingray.Vector3.up(), (record.rot_angle * 0.0174533) )
+                            -- spawn the unit in the engine
+                        local unit = stingray.World.spawn_unit( LevelEditing.world, record.unit, position, rotation )
+                            -- register the unit with the editor so that it gets saved with the level
+                        local id = Application.guid()
+                        local level_object = UnitObject(unit, id, record.unit, nil, nil, nil)
+                        level_object.id = id
+                        LevelEditing.objects[level_object.id] = level_object
+                        LevelEditing:spawned({level_object})
+                    end
+                
+                """
+            }
+        }
+    ]
+
+}
+
+// Dependencies
+//
+platforms = ["win64"]
+dependencies = {
+    "stingray" = ">=1.7.0"
+}
